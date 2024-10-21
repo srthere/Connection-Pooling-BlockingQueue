@@ -8,8 +8,8 @@ public class ConnectionPool {
     final BlockingQueue<Connection> blockingQueue = new ArrayBlockingQueue<>(10);
 
     public void createConnectionPool() throws SQLException, ClassNotFoundException {
+        DBConnection dbConnection = new DBConnection();
         for (int i = 0; i < 10; i++) {
-            DBConnection dbConnection = new DBConnection();
             blockingQueue.add(dbConnection.createConnection());
         }
     }
